@@ -101,6 +101,7 @@
     <Compile Include="CustomPropertiesPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomProperty.cs" />
     <Compile Include="PropertyPanel.cs">
       <SubType>Component</SubType>
     </Compile>

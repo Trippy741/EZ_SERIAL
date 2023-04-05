@@ -12,11 +12,11 @@ namespace CommunicateWithArduino
         private Label propertyLabel;
         private Control propertyControl;
         public Point panelLocation { get; set; }
-        public CustomPropertiesPanel(string propertyTitle, Control propertyControl)
+        public CustomPropertiesPanel(CustomProperty customProperty)
         {
             propertyLabel = new Label();
-            propertyLabel.Text = propertyTitle;
-            this.propertyControl = propertyControl;
+            propertyLabel.Text = customProperty.propertyName;
+            this.propertyControl = customProperty.propertyControl;
 
             this.Size = new Size(225, 42);
             this.BackColor = Color.Black;

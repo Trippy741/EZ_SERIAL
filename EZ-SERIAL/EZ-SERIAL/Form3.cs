@@ -27,14 +27,26 @@ namespace CommunicateWithArduino
 
         private void editModeBtn_Click(object sender, EventArgs e)
         {
-            propertiesGroupBoxes.Add(new CustomPropertiesGroupBox("Appearance"));
-            propertiesGroupBoxes[0].AddCustomPropertyPanel();
-            propertiesGroupBoxes[0].AddCustomPropertyPanel();
-            panel1.Controls.Add(propertiesGroupBoxes[0]);
+
+            foreach (CustomButton button in buttons)
+            {
+                button.ToggleDraggable();
+            }
         }
-        private void setPropertiesPanel(object sender, MouseEventArgs e)
+        private void OnCustomButtonMouseClick(object sender, MouseEventArgs e)
         {
-            
+            propertiesGroupBoxes.Clear();
+            CustomButton senderBtn = (CustomButton)sender;
+
+            CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox("Appearance");
+            foreach(CustomProperty property in senderBtn.appearanceProperties)
+                groupBox.propertyPanels.Add(new CustomPropertiesPanel(property));
+
+            groupBox.addPropertyPanels();
+            propertiesGroupBoxes.Add(groupBox);
+
+            foreach (CustomPropertiesGroupBox Box in propertiesGroupBoxes)
+                panel1.Controls.Add(Box);
         }
 
         private void newButtonBtn_Click(object sender, EventArgs e)
@@ -42,7 +54,7 @@ namespace CommunicateWithArduino
             CustomButton btn = new CustomButton();
             dashboardGroupBox.Controls.Add(btn);
             buttons.Add(btn);
-            btn.MouseDown += setPropertiesPanel;
+            btn.MouseDown += OnCustomButtonMouseClick;
         }
     }
 }

@@ -16,7 +16,15 @@ namespace CommunicateWithArduino
             this.Dock = DockStyle.Top;
             this.Text = groupBoxText;
         }
-        public void AddCustomPropertyPanel()
+        public void addPropertyPanels()
+        {
+            propertyPanels.Clear();
+            foreach (CustomPropertiesPanel panel in propertyPanels)
+            {
+                this.Controls.Add(panel);
+            }
+        }
+        /*public void AddCustomPropertyPanel()
         {
             System.Drawing.Point location;
             CustomPropertiesPanel panel = new CustomPropertiesPanel("Text", new ComboBox());
@@ -30,6 +38,6 @@ namespace CommunicateWithArduino
             this.Controls.Add(panel);
             propertyPanels.Add(panel);
             
-        }
+        }*/
     }
 }

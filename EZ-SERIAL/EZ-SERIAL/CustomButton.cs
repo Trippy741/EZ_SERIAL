@@ -9,12 +9,37 @@ namespace CommunicateWithArduino
     internal class CustomButton : Button
     {
         protected bool isDraggable = true;
+        public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
         public CustomButton()
         {
             ControlExtension.Draggable(this, true);
             this.MouseUp += rightClickHandler;
+
+            //Button Text Property
+            CustomProperty buttonTextProperty = new CustomProperty();
+            buttonTextProperty.propertyName = "Button Text";
+            buttonTextProperty.propertyControl = new Label();
+            appearanceProperties.Add(buttonTextProperty);
+
+            //Background color property
+            CustomProperty bgColorProperty = new CustomProperty();
+            bgColorProperty.propertyName = "BG Color";
+            bgColorProperty.propertyControl = new Panel();
+            appearanceProperties.Add(bgColorProperty);
+
+            //Foreground color property
+            CustomProperty fgColorProperty = new CustomProperty();
+            fgColorProperty.propertyName = "FG Color";
+            fgColorProperty.propertyControl = new Panel();
+            appearanceProperties.Add(fgColorProperty);
+
+            //Size property
+            CustomProperty sizeProperty = new CustomProperty();
+            sizeProperty.propertyName = "Size (X,Y)";
+            sizeProperty.propertyControl = new TextBox();
+            appearanceProperties.Add(sizeProperty);
         }
-        private void ToggleDraggable()
+        public void ToggleDraggable()
         {
             isDraggable = !isDraggable;
             ControlExtension.Draggable(this, isDraggable);
@@ -31,11 +56,6 @@ namespace CommunicateWithArduino
             {
                 openContextMenu();
             }
-        }
-        protected override void OnPaint(PaintEventArgs pevent)
-        {
-
-            base.OnPaint(pevent);
         }
     }
 }
