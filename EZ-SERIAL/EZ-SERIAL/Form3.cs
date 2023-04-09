@@ -27,7 +27,7 @@ namespace CommunicateWithArduino
 
         private void editModeBtn_Click(object sender, EventArgs e)
         {
-
+            editMode = !editMode;
             foreach (CustomButton button in buttons)
             {
                 button.ToggleDraggable();
@@ -36,17 +36,14 @@ namespace CommunicateWithArduino
         private void OnCustomButtonMouseClick(object sender, MouseEventArgs e)
         {
             propertiesGroupBoxes.Clear();
+
             CustomButton senderBtn = (CustomButton)sender;
 
-            CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox("Appearance");
-            foreach(CustomProperty property in senderBtn.appearanceProperties)
-                groupBox.propertyPanels.Add(new CustomPropertiesPanel(property));
-
-            groupBox.addPropertyPanels();
-            propertiesGroupBoxes.Add(groupBox);
-
-            foreach (CustomPropertiesGroupBox Box in propertiesGroupBoxes)
-                panel1.Controls.Add(Box);
+            foreach (KeyValuePair<string,List<CustomProperty>> entry in senderBtn.customPropertyDictionary)
+            {
+                CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(entry.Key, entry.Value);
+                panel1.Controls.Add(groupBox);
+            }
         }
 
         private void newButtonBtn_Click(object sender, EventArgs e)

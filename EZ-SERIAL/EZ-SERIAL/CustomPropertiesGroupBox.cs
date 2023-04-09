@@ -10,34 +10,51 @@ namespace CommunicateWithArduino
     {
         private int locationYMargin = 50;
         public List<CustomPropertiesPanel> propertyPanels = new List<CustomPropertiesPanel>();
-        public CustomPropertiesGroupBox(string groupBoxText)
+        public CustomPropertiesGroupBox(string groupBoxText, List<CustomProperty> customPropertyDictionary)
         {
-            this.AutoSize = true;
-            this.Dock = DockStyle.Top;
-            this.Text = groupBoxText;
-        }
-        public void addPropertyPanels()
-        {
-            propertyPanels.Clear();
-            foreach (CustomPropertiesPanel panel in propertyPanels)
+            foreach (CustomProperty property in customPropertyDictionary)
             {
-                this.Controls.Add(panel);
+                propertyPanels.Add(new CustomPropertiesPanel(property));
+            }
+            this.AutoSize = true;
+            //this.Dock = DockStyle.Top;
+            this.Text = groupBoxText;
+            spaceApartPropertyPanels();
+        }
+        public void spaceApartPropertyPanels()
+        {
+            if (propertyPanels.Count > 0)
+            {
+                List<CustomPropertiesPanel> panels = new List<CustomPropertiesPanel>();
+                panels.AddRange(propertyPanels);
+                foreach (CustomPropertiesPanel panel in panels)
+                {
+                    System.Drawing.Point location;
+
+                    if (propertyPanels.Count > 0)
+                        location = new System.Drawing.Point(propertyPanels.Last().Location.X, propertyPanels.Last().Location.Y + locationYMargin);
+                    else
+                        location = new System.Drawing.Point(6, 21);
+
+                    panel.Location = location;
+                    this.Controls.Add(panel);
+                    propertyPanels.Add(panel);
+                }
             }
         }
         /*public void AddCustomPropertyPanel()
         {
             System.Drawing.Point location;
-            CustomPropertiesPanel panel = new CustomPropertiesPanel("Text", new ComboBox());
 
             if (propertyPanels.Count > 0)
-            location = new System.Drawing.Point(propertyPanels.Last().Location.X, propertyPanels.Last().Location.Y + locationYMargin);
+                location = new System.Drawing.Point(propertyPanels.Last().Location.X, propertyPanels.Last().Location.Y + locationYMargin);
             else
                 location = new System.Drawing.Point(6, 21);
 
             panel.Location = location;
             this.Controls.Add(panel);
             propertyPanels.Add(panel);
-            
+
         }*/
     }
 }

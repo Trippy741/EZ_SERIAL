@@ -9,7 +9,9 @@ namespace CommunicateWithArduino
     internal class CustomButton : Button
     {
         protected bool isDraggable = true;
-        public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
+        private List<CustomProperty> customPropertyList = new List<CustomProperty>();
+        public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
+        //public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
         public CustomButton()
         {
             ControlExtension.Draggable(this, true);
@@ -18,26 +20,28 @@ namespace CommunicateWithArduino
             //Button Text Property
             CustomProperty buttonTextProperty = new CustomProperty();
             buttonTextProperty.propertyName = "Button Text";
-            buttonTextProperty.propertyControl = new Label();
-            appearanceProperties.Add(buttonTextProperty);
+            buttonTextProperty.propertyControl = new TextBox();
+            customPropertyList.Add(buttonTextProperty);
 
             //Background color property
             CustomProperty bgColorProperty = new CustomProperty();
             bgColorProperty.propertyName = "BG Color";
             bgColorProperty.propertyControl = new Panel();
-            appearanceProperties.Add(bgColorProperty);
+            customPropertyList.Add(bgColorProperty);
 
             //Foreground color property
             CustomProperty fgColorProperty = new CustomProperty();
             fgColorProperty.propertyName = "FG Color";
             fgColorProperty.propertyControl = new Panel();
-            appearanceProperties.Add(fgColorProperty);
+            customPropertyList.Add(fgColorProperty);
 
             //Size property
             CustomProperty sizeProperty = new CustomProperty();
             sizeProperty.propertyName = "Size (X,Y)";
             sizeProperty.propertyControl = new TextBox();
-            appearanceProperties.Add(sizeProperty);
+            customPropertyList.Add(sizeProperty);
+
+            customPropertyDictionary.Add("Appearance",customPropertyList);
         }
         public void ToggleDraggable()
         {
@@ -47,8 +51,12 @@ namespace CommunicateWithArduino
         private void openContextMenu()
         {
             ContextMenu menu = new ContextMenu();
-            menu.MenuItems.Add("Delete");
+            menu.MenuItems.Add(new MenuItem("Delete",deleteButtonHandler));
             menu.Show(this,new System.Drawing.Point(this.Width / 2,this.Height / 2));//Creating the context menu in the middle of the control
+        }
+        private void deleteButtonHandler(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
         private void rightClickHandler(object sender, MouseEventArgs e)
         {
