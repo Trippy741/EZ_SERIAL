@@ -42,6 +42,7 @@ namespace CommunicateWithArduino
             foreach (KeyValuePair<string,List<CustomProperty>> entry in senderBtn.customPropertyDictionary)
             {
                 CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(entry.Key, entry.Value);
+                groupBox.onCustomPropertyChange(senderBtn.propertyChangeCallback);
                 panel1.Controls.Add(groupBox);
             }
         }

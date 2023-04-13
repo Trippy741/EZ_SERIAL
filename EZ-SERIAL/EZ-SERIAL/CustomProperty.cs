@@ -8,14 +8,10 @@ namespace CommunicateWithArduino
 {
     internal class CustomProperty
     {
-        public CustomProperty()
+        public CustomProperty(string propertyName, Control PropertyControl)
         {
-            if(propertyControl != null)
-                propertyControl.TextChanged += controlTextChangedHandler;
-        }
-        private void controlTextChangedHandler(object sender, EventArgs e)
-        {
-            //
+            this.propertyName = propertyName;
+            this.propertyControl = propertyControl;
         }
         public string propertyName { get; set; }
         public Control propertyControl { get; set; }

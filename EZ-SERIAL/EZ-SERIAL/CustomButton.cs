@@ -10,6 +10,8 @@ namespace CommunicateWithArduino
     {
         protected bool isDraggable = true;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
+        public delegate void propertyChangeApply(string key, List<CustomProperty> value);
+        public propertyChangeApply propertyChangeCallback;
         public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
         //public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
         public CustomButton()
@@ -18,30 +20,31 @@ namespace CommunicateWithArduino
             this.MouseUp += rightClickHandler;
 
             //Button Text Property
-            CustomProperty buttonTextProperty = new CustomProperty();
-            buttonTextProperty.propertyName = "Button Text";
-            buttonTextProperty.propertyControl = new TextBox();
+            CustomProperty buttonTextProperty = new CustomProperty("Button Text", new TextBox());
             customPropertyList.Add(buttonTextProperty);
 
             //Background color property
-            CustomProperty bgColorProperty = new CustomProperty();
-            bgColorProperty.propertyName = "BG Color";
-            bgColorProperty.propertyControl = new Panel();
+            CustomProperty bgColorProperty = new CustomProperty("BG Color", new Panel());
             customPropertyList.Add(bgColorProperty);
 
             //Foreground color property
-            CustomProperty fgColorProperty = new CustomProperty();
-            fgColorProperty.propertyName = "FG Color";
-            fgColorProperty.propertyControl = new Panel();
+            CustomProperty fgColorProperty = new CustomProperty("FG Color", new Panel());
             customPropertyList.Add(fgColorProperty);
 
             //Size property
-            CustomProperty sizeProperty = new CustomProperty();
-            sizeProperty.propertyName = "Size (X,Y)";
-            sizeProperty.propertyControl = new TextBox();
+            CustomProperty sizeProperty = new CustomProperty("Size (X,Y)", new TextBox());
             customPropertyList.Add(sizeProperty);
 
             customPropertyDictionary.Add("Appearance",customPropertyList);
+
+            propertyChangeCallback = ApplyChanges;
+        }
+        public void ApplyChanges(string key,List<CustomProperty> value)
+        {
+            customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
+            //Apply all changes to button design and functions
+
+
         }
         public void ToggleDraggable()
         {

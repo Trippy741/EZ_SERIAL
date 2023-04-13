@@ -10,7 +10,7 @@ namespace CommunicateWithArduino
     internal class CustomPropertiesPanel : Panel
     {
         private Label propertyLabel;
-        private Control propertyControl;
+        public Control propertyControl;
         public Point panelLocation { get; set; }
         public CustomPropertiesPanel(CustomProperty customProperty)
         {
