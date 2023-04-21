@@ -36,13 +36,14 @@ namespace CommunicateWithArduino
         private void OnCustomButtonMouseClick(object sender, MouseEventArgs e)
         {
             propertiesGroupBoxes.Clear();
+            foreach (Control control in panel1.Controls)
+                panel1.Controls.Remove(control);
 
             CustomButton senderBtn = (CustomButton)sender;
 
             foreach (KeyValuePair<string,List<CustomProperty>> entry in senderBtn.customPropertyDictionary)
             {
-                CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(entry.Key, entry.Value);
-                groupBox.onCustomPropertyChange(senderBtn.propertyChangeCallback);
+                CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(senderBtn.propertyChangeCallback,entry.Key, entry.Value);
                 panel1.Controls.Add(groupBox);
             }
         }

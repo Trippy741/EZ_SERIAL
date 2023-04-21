@@ -9,11 +9,13 @@ namespace CommunicateWithArduino
 {
     internal class CustomPropertiesPanel : Panel
     {
-        private Label propertyLabel;
+        public Label propertyLabel { get; }
         public Control propertyControl;
+        public CustomProperty customProperty { get; }
         public Point panelLocation { get; set; }
         public CustomPropertiesPanel(CustomProperty customProperty)
         {
+            this.customProperty = customProperty;
             propertyLabel = new Label();
             propertyLabel.Text = customProperty.propertyName;
             this.propertyControl = customProperty.propertyControl;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -41,9 +42,16 @@ namespace CommunicateWithArduino
         }
         public void ApplyChanges(string key,List<CustomProperty> value)
         {
-            customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
             //Apply all changes to button design and functions
+            if (key == "Appearance")
+            {
+                this.Text = customPropertyList[0].propertyControl.Text;
+                this.BackColor = customPropertyList[1].propertyControl.BackColor;
+                this.ForeColor = customPropertyList[2].propertyControl.ForeColor;
 
+                string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
+                this.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));
+            }
 
         }
         public void ToggleDraggable()

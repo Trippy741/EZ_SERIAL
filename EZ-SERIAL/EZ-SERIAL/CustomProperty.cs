@@ -8,17 +8,12 @@ namespace CommunicateWithArduino
 {
     internal class CustomProperty
     {
-        public CustomProperty(string propertyName, Control PropertyControl)
+        public CustomProperty(string propertyName, Control propertyControl)
         {
             this.propertyName = propertyName;
             this.propertyControl = propertyControl;
         }
         public string propertyName { get; set; }
         public Control propertyControl { get; set; }
-
-        struct defaultPropertyValue<T>
-        {
-            public T value { get; set; }
-        }
     }
 }
