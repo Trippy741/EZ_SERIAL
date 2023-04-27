@@ -102,6 +102,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomProperty.cs" />
+    <Compile Include="CustomTimerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ICustomButton.cs" />
     <Compile Include="PropertyPanel.cs">
       <SubType>Component</SubType>
     </Compile>

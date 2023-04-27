@@ -7,15 +7,15 @@ using System.Windows.Forms;
 
 namespace CommunicateWithArduino
 {
-    internal class CustomButton : Button
+    internal class CustomButtonControl : Button, ICustomControl
     {
         protected bool isDraggable = true;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
-        public delegate void propertyChangeApply(string key, List<CustomProperty> value);
-        public propertyChangeApply propertyChangeCallback;
+        /*public delegate void propertyChangeApply(string key, List<CustomProperty> value);
+        public propertyChangeApply propertyChangeCallback;*/
         public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
         //public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
-        public CustomButton()
+        public CustomButtonControl()
         {
             ControlExtension.Draggable(this, true);
             this.MouseUp += rightClickHandler;
@@ -38,9 +38,9 @@ namespace CommunicateWithArduino
 
             customPropertyDictionary.Add("Appearance",customPropertyList);
 
-            propertyChangeCallback = ApplyChanges;
+            //propertyChangeCallback = ApplyChanges;
         }
-        public void ApplyChanges(string key,List<CustomProperty> value)
+        /*public void ApplyChanges(string key,List<CustomProperty> value)
         {
             //Apply all changes to button design and functions
             if (key == "Appearance")
@@ -49,10 +49,16 @@ namespace CommunicateWithArduino
                 this.BackColor = customPropertyList[1].propertyControl.BackColor;
                 this.ForeColor = customPropertyList[2].propertyControl.ForeColor;
 
-                string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
-                this.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));
+                *//*string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
+                button.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));*//*
             }
 
+        }*/
+        public void OnPropertyChange()
+        {
+            this.Text = customPropertyList[0].propertyControl.Text;
+            this.BackColor = customPropertyList[1].propertyControl.BackColor;
+            this.ForeColor = customPropertyList[2].propertyControl.ForeColor;
         }
         public void ToggleDraggable()
         {
@@ -63,7 +69,7 @@ namespace CommunicateWithArduino
         {
             ContextMenu menu = new ContextMenu();
             menu.MenuItems.Add(new MenuItem("Delete",deleteButtonHandler));
-            menu.Show(this,new System.Drawing.Point(this.Width / 2,this.Height / 2));//Creating the context menu in the middle of the control
+            menu.Show(this,new System.Drawing.Point(this.Width / 2, this.Height / 2));//Creating the context menu in the middle of the control
         }
         private void deleteButtonHandler(object sender, EventArgs e)
         {

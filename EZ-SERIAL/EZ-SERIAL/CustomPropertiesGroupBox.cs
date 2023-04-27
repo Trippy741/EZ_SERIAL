@@ -12,10 +12,10 @@ namespace CommunicateWithArduino
         private int locationYMargin = 50;
         public List<CustomPropertiesPanel> propertyPanels = new List<CustomPropertiesPanel>();
 
-        private CustomButton.propertyChangeApply callbackDelegate;
+        private CustomButtonControl.propertyChangeApply callbackDelegate;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
 
-        public CustomPropertiesGroupBox(CustomButton.propertyChangeApply callbackDelegate, string groupBoxTitle, List<CustomProperty> customPropertyList)
+        /*public CustomPropertiesGroupBox(Control.propertyChangeApply callbackDelegate, string groupBoxTitle, List<CustomProperty> customPropertyList)
         {
             this.customPropertyList.Clear();
             propertyPanels.Clear();
@@ -28,7 +28,25 @@ namespace CommunicateWithArduino
                 propertyPanels.Add(new CustomPropertiesPanel(this.customPropertyList[i]));
             }
             this.AutoSize = true;
-            //this.Dock = DockStyle.Top;
+            this.Dock = DockStyle.Top;
+            this.Text = groupBoxTitle;
+            spaceApartPropertyPanels();
+            SetCustomOnChangeEvent();
+        }*/
+        public CustomPropertiesGroupBox(string groupBoxTitle, List<CustomProperty> customPropertyList)
+        {
+            this.customPropertyList.Clear();
+            propertyPanels.Clear();
+
+            this.callbackDelegate = callbackDelegate;
+            this.customPropertyList.AddRange(customPropertyList);
+
+            for (int i = 0; i < this.customPropertyList.Count; i++)
+            {
+                propertyPanels.Add(new CustomPropertiesPanel(this.customPropertyList[i]));
+            }
+            this.AutoSize = true;
+            this.Dock = DockStyle.Top;
             this.Text = groupBoxTitle;
             spaceApartPropertyPanels();
             SetCustomOnChangeEvent();
