@@ -11,7 +11,6 @@ namespace CommunicateWithArduino
         private int locationYMargin = 50;
         public List<CustomPropertiesPanel> propertyPanels = new List<CustomPropertiesPanel>();
 
-        private CustomButtonControl.propertyChangeApply callbackDelegate;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
 
         private ICustomControl senderObject;
@@ -40,7 +39,7 @@ namespace CommunicateWithArduino
 
             foreach (CustomPropertiesPanel panel in propertyPanels)
             {
-                if (panel.propertyControl.GetType() == typeof(TextBox))
+                if (panel.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Button Text")
                 {
                     TextBox panelTextBox = (TextBox)panel.propertyControl;
                     panelTextBox.TextChanged += delegate (object sender, EventArgs e) { customTextBoxControl_TextChanged(sender, e, panel); };
@@ -62,9 +61,10 @@ namespace CommunicateWithArduino
                 }
                 if (panel.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Size(X, Y)")
                 {
+                    MessageBox.Show("Setting Event");
                     TextBox panelControl = (TextBox)panel.propertyControl;
                     //Change this event to activate only when the user presses the ENTER or SPACE keys
-                    panelControl.Click += delegate (object sender, EventArgs e) { customSizeTextBoxControl_TextChanged(sender, e, panel); };
+                    panelControl.KeyDown += delegate (object sender, KeyEventArgs e) { customSizeTextBoxControl_TextChanged(sender, e, panel); };
                 }
             }
         }
@@ -120,35 +120,40 @@ namespace CommunicateWithArduino
                     MessageBox.Show("FG");
                     ColorDialog colorDialog = new ColorDialog();
                     if (colorDialog.ShowDialog() == DialogResult.OK)
-                        customProperty.propertyControl.ForeColor = colorDialog.Color;
+                        customProperty.propertyControl.BackColor = colorDialog.Color;
                 }
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
-        private void customSizeTextBoxControl_TextChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
+        private void customSizeTextBoxControl_TextChanged(object sender, KeyEventArgs e, CustomPropertiesPanel panel)
         {
-            TextBox senderTextBox = (TextBox)sender;
-
-            foreach (CustomProperty customProperty in customPropertyList)
+            MessageBox.Show("Entered!");
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Space)
             {
-                if (customProperty == panel.customProperty)
-                {
-                    if(senderTextBox.Text.Count(t => t == ',') != 1)
-                        MessageBox.Show("Invalid Input!");
-                    foreach (char c in senderTextBox.Text)
-                        if (!Char.IsDigit(c))
-                            MessageBox.Show("Invalid Input!");
+                
+                TextBox senderTextBox = (TextBox)sender;
 
-                    string[] split_size = senderTextBox.Text.Split(',');
-                    if (split_size.Length != 2)
-                        MessageBox.Show("Invalid Input!");
-                    else
+                foreach (CustomProperty customProperty in customPropertyList)
+                {
+                    if (customProperty == panel.customProperty)
                     {
-                        customProperty.propertyControl.Text = senderTextBox.Text;
+                        if (senderTextBox.Text.Count(t => t == ',') != 1)
+                            MessageBox.Show("Invalid Input!");
+                        foreach (char c in senderTextBox.Text)
+                            if (!Char.IsDigit(c))
+                                MessageBox.Show("Invalid Input!");
+
+                        string[] split_size = senderTextBox.Text.Split(',');
+                        if (split_size.Length != 2)
+                            MessageBox.Show("Invalid Input!");
+                        else
+                        {
+                            customProperty.propertyControl.Text = senderTextBox.Text;
+                        }
                     }
                 }
+                senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
             }
-            senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
         public void spaceApartPropertyPanels()
         {

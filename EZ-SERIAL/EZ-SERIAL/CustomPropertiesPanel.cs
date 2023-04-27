@@ -27,15 +27,15 @@ namespace CommunicateWithArduino
             Panel propertyLabelPanel = new Panel();
             this.Controls.Add(propertyLabelPanel);
             propertyLabelPanel.Size = new Size(75, 36);
+            //propertyLabelPanel.AutoSize = true;
             propertyLabelPanel.Location = new Point(3, 3);
             propertyLabelPanel.BackColor = Color.Gray;
 
             //The label itself
             propertyLabelPanel.Controls.Add(propertyLabel);
-            propertyLabel.Size = new Size(69, 18);
             propertyLabel.Location = new Point(3, 9);
             propertyLabel.AutoSize = true;
-            propertyLabel.Font = new Font("Arial",10.2f,FontStyle.Bold);
+            propertyLabel.Font = new Font("Arial",9f,FontStyle.Bold);
             propertyLabel.ForeColor = Color.White;
             
 

@@ -6,12 +6,10 @@ using System.Windows.Forms;
 
 namespace CommunicateWithArduino
 {
-    internal class CustomTimerControl : Label
+    internal class CustomTimerControl : Label , ICustomControl
     {
         public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
-        public delegate void propertyChangeApply(string key, List<CustomProperty> value);
-        public propertyChangeApply propertyChangeCallback;
-        public void ApplyChanges(string key, List<CustomProperty> value)
+        public void ApplyPropertyChanges(string key, List<CustomProperty> value)
         {
             //Apply all changes to button design and functions
             if (key == "Appearance")

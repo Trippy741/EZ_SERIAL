@@ -11,17 +11,19 @@ namespace CommunicateWithArduino
     {
         protected bool isDraggable = true;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
-        public delegate void propertyChangeApply(string key, List<CustomProperty> value);
-        public propertyChangeApply propertyChangeCallback;
         public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
         //public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
         public CustomButtonControl()
         {
             ControlExtension.Draggable(this, true);
             this.MouseUp += rightClickHandler;
+            this.AutoSize = true;
+
 
             //Button Text Property
             CustomProperty buttonTextProperty = new CustomProperty("Button Text", new TextBox());
+            TextBox tempTextBoxText = (TextBox)buttonTextProperty.propertyControl;
+            tempTextBoxText.Text = "Button";
             customPropertyList.Add(buttonTextProperty);
 
             //Background color property
@@ -34,11 +36,12 @@ namespace CommunicateWithArduino
 
             //Size property
             CustomProperty sizeProperty = new CustomProperty("Size (X,Y)", new TextBox());
+            TextBox tempTextBoxSize = (TextBox)sizeProperty.propertyControl;
+            tempTextBoxSize.Text = "75,23";
             customPropertyList.Add(sizeProperty);
 
             customPropertyDictionary.Add("Appearance",customPropertyList);
-
-            propertyChangeCallback = ApplyPropertyChanges;
+            ApplyPropertyChanges("Appearance",customPropertyList);
         }
         public void ApplyPropertyChanges(string key, List<CustomProperty> value)
         {
@@ -49,8 +52,8 @@ namespace CommunicateWithArduino
                 this.BackColor = customPropertyList[1].propertyControl.BackColor;
                 this.ForeColor = customPropertyList[2].propertyControl.ForeColor;
 
-                //string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
-                //this.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));
+                string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
+                this.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));
             }
 
         }

@@ -84,7 +84,7 @@
             this.panel12.AutoSize = true;
             this.panel12.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel12.Controls.Add(this.label4);
-            this.panel12.Location = new System.Drawing.Point(200, 161);
+            this.panel12.Location = new System.Drawing.Point(40, 450);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(268, 100);
             this.panel12.TabIndex = 1;
@@ -186,7 +186,7 @@
             this.panel8.Controls.Add(this.panel10);
             this.panel8.Location = new System.Drawing.Point(6, 117);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(375, 42);
+            this.panel8.Size = new System.Drawing.Size(424, 42);
             this.panel8.TabIndex = 3;
             // 
             // panel9
@@ -216,7 +216,7 @@
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Location = new System.Drawing.Point(130, 3);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(242, 36);
+            this.panel10.Size = new System.Drawing.Size(291, 36);
             this.panel10.TabIndex = 1;
             // 
             // panel11
@@ -224,7 +224,7 @@
             this.panel11.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel11.Location = new System.Drawing.Point(3, 3);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(236, 30);
+            this.panel11.Size = new System.Drawing.Size(285, 30);
             this.panel11.TabIndex = 0;
             // 
             // panel5
@@ -234,7 +234,7 @@
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Location = new System.Drawing.Point(6, 69);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(375, 42);
+            this.panel5.Size = new System.Drawing.Size(424, 42);
             this.panel5.TabIndex = 2;
             // 
             // panel6
@@ -264,7 +264,7 @@
             this.panel7.Controls.Add(this.comboBox1);
             this.panel7.Location = new System.Drawing.Point(130, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(242, 36);
+            this.panel7.Size = new System.Drawing.Size(291, 36);
             this.panel7.TabIndex = 1;
             // 
             // comboBox1
@@ -279,7 +279,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(3, 5);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 27);
+            this.comboBox1.Size = new System.Drawing.Size(285, 27);
             this.comboBox1.TabIndex = 0;
             // 
             // panel4
@@ -289,7 +289,7 @@
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Location = new System.Drawing.Point(6, 21);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(375, 42);
+            this.panel4.Size = new System.Drawing.Size(424, 42);
             this.panel4.TabIndex = 2;
             // 
             // panel2
@@ -320,7 +320,7 @@
             this.panel3.Controls.Add(this.richTextBox1);
             this.panel3.Location = new System.Drawing.Point(130, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(242, 36);
+            this.panel3.Size = new System.Drawing.Size(291, 36);
             this.panel3.TabIndex = 1;
             // 
             // richTextBox1
@@ -333,7 +333,7 @@
             this.richTextBox1.Multiline = false;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox1.Size = new System.Drawing.Size(236, 36);
+            this.richTextBox1.Size = new System.Drawing.Size(285, 36);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
