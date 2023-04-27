@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace CommunicateWithArduino
 {
@@ -15,30 +14,15 @@ namespace CommunicateWithArduino
         private CustomButtonControl.propertyChangeApply callbackDelegate;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
 
-        /*public CustomPropertiesGroupBox(Control.propertyChangeApply callbackDelegate, string groupBoxTitle, List<CustomProperty> customPropertyList)
+        private ICustomControl senderObject;
+
+        public CustomPropertiesGroupBox(object sender,string groupBoxTitle, List<CustomProperty> customPropertyList)
         {
             this.customPropertyList.Clear();
             propertyPanels.Clear();
 
-            this.callbackDelegate = callbackDelegate;
-            this.customPropertyList.AddRange(customPropertyList);
+            senderObject = sender as ICustomControl;
 
-            for (int i = 0; i < this.customPropertyList.Count; i++)
-            {
-                propertyPanels.Add(new CustomPropertiesPanel(this.customPropertyList[i]));
-            }
-            this.AutoSize = true;
-            this.Dock = DockStyle.Top;
-            this.Text = groupBoxTitle;
-            spaceApartPropertyPanels();
-            SetCustomOnChangeEvent();
-        }*/
-        public CustomPropertiesGroupBox(string groupBoxTitle, List<CustomProperty> customPropertyList)
-        {
-            this.customPropertyList.Clear();
-            propertyPanels.Clear();
-
-            this.callbackDelegate = callbackDelegate;
             this.customPropertyList.AddRange(customPropertyList);
 
             for (int i = 0; i < this.customPropertyList.Count; i++)
@@ -95,7 +79,7 @@ namespace CommunicateWithArduino
                     customProperty.propertyControl.Text = panel.customProperty.propertyControl.Text;
                 }
             }
-            callbackDelegate(this.Text, customPropertyList);
+            senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
             //Change the custom properties within the list
             //So that the callback function could bring those values back to the custom button
         }
@@ -109,7 +93,7 @@ namespace CommunicateWithArduino
                     customProperty.propertyControl = senderCheckBox;
                 }
             }
-            callbackDelegate(this.Text, customPropertyList);
+            senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
         private void customBGColorDialogControl_ColorChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
         {
@@ -124,7 +108,7 @@ namespace CommunicateWithArduino
                         customProperty.propertyControl.BackColor = colorDialog.Color;
                 }
             }
-            callbackDelegate(this.Text, customPropertyList);
+            senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
         private void customFGColorDialogControl_ColorChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
         {
@@ -139,7 +123,7 @@ namespace CommunicateWithArduino
                         customProperty.propertyControl.ForeColor = colorDialog.Color;
                 }
             }
-            callbackDelegate(this.Text, customPropertyList);
+            senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
         private void customSizeTextBoxControl_TextChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
         {
@@ -164,7 +148,7 @@ namespace CommunicateWithArduino
                     }
                 }
             }
-            callbackDelegate(this.Text, customPropertyList);
+            senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
         public void spaceApartPropertyPanels()
         {

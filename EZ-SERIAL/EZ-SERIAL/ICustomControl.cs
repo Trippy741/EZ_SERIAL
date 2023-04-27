@@ -7,6 +7,6 @@ namespace CommunicateWithArduino
 {
     internal interface ICustomControl
     {
-        void OnPropertyChange();
+        void ApplyPropertyChanges(string key, List<CustomProperty> value);
     }
 }
