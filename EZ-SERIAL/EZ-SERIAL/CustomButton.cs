@@ -7,8 +7,10 @@ using System.Windows.Forms;
 
 namespace CommunicateWithArduino
 {
-    internal class CustomButtonControl : Button, ICustomControl
+    internal class CustomButtonControl : Button
     {
+
+
         protected bool isDraggable = true;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
         /*public delegate void propertyChangeApply(string key, List<CustomProperty> value);
@@ -17,6 +19,8 @@ namespace CommunicateWithArduino
         //public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
         public CustomButtonControl()
         {
+            MessageBox.Show("Added Button");
+
             ControlExtension.Draggable(this, true);
             this.MouseUp += rightClickHandler;
 
@@ -69,7 +73,7 @@ namespace CommunicateWithArduino
         {
             ContextMenu menu = new ContextMenu();
             menu.MenuItems.Add(new MenuItem("Delete",deleteButtonHandler));
-            menu.Show(this,new System.Drawing.Point(this.Width / 2, this.Height / 2));//Creating the context menu in the middle of the control
+            menu.Show(this, new System.Drawing.Point(this.Width / 2, this.Height / 2));//Creating the context menu in the middle of the control
         }
         private void deleteButtonHandler(object sender, EventArgs e)
         {

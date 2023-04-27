@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CommunicateWithArduino
 {
-    internal class CustomTimerControl : Panel
+    internal class CustomTimerControl : CustomControl
     {
 
     }

@@ -12,7 +12,7 @@ namespace CommunicateWithArduino
     public partial class Form3 : Form
     {
         private bool editMode = true;
-        private List<Control> customControls = new List<Control>();
+        private List<CustomControl> customControls = new List<CustomControl>();
         private List<CustomPropertiesGroupBox> propertiesGroupBoxes = new List<CustomPropertiesGroupBox>();
           
         public Form3()
@@ -28,10 +28,6 @@ namespace CommunicateWithArduino
         private void editModeBtn_Click(object sender, EventArgs e)
         {
             editMode = !editMode;
-            foreach (CustomButtonControl button in customControls)
-            {
-                button.ToggleDraggable();
-            }
         }
         /*private void OnCustomButtonMouseClick(object sender, MouseEventArgs e)
         {
@@ -47,15 +43,15 @@ namespace CommunicateWithArduino
                 panel1.Controls.Add(groupBox);
             }
         }*/
-        private void OnCustomControlMouseClick(object sender, MouseEventArgs e, string control_type)
+        private void OnCustomControlMouseClick(object sender, MouseEventArgs e)
         {
             propertiesGroupBoxes.Clear();
             foreach (Control control in panel1.Controls)
                 panel1.Controls.Remove(control);
 
             //Control tempControl = new Control();
-
-            if (control_type == "CUSTOM_BUTTON")
+            MessageBox.Show(sender.GetType().ToString());
+            /*if ()
             {
                 CustomButtonControl button = (CustomButtonControl)sender;
                 foreach (KeyValuePair<string, List<CustomProperty>> entry in button.customPropertyDictionary)
@@ -63,7 +59,7 @@ namespace CommunicateWithArduino
                     CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(button.propertyChangeCallback, entry.Key, entry.Value);
                     panel1.Controls.Add(groupBox);
                 }
-            }
+            }*/
             /*if (control_type == "CUSTOM_TIMER")
             {
                 foreach (KeyValuePair<string, List<CustomProperty>> entry in tempControl.customPropertyDictionary)
@@ -78,8 +74,7 @@ namespace CommunicateWithArduino
         {
             CustomButtonControl btn = new CustomButtonControl();
             dashboardGroupBox.Controls.Add(btn);
-            customControls.Add(btn);
-            btn.MouseDown += delegate (object _sender, MouseEventArgs _e) { OnCustomControlMouseClick(sender, _e, "CUSTOM_BUTTON"); };
+            btn.MouseDown += OnCustomControlMouseClick;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,7 +82,7 @@ namespace CommunicateWithArduino
             CustomTimerControl timer = new CustomTimerControl();
             dashboardGroupBox.Controls.Add(timer);
             customControls.Add(timer);
-            timer.MouseDown += delegate (object _sender, MouseEventArgs _e) { OnCustomControlMouseClick(sender, _e, "CUSTOM_TIMER"); };
+            //timer.MouseDown += delegate (object _sender, MouseEventArgs _e) { OnCustomControlMouseClick(sender, _e, "CUSTOM_TIMER"); };
         }
     }
 }
