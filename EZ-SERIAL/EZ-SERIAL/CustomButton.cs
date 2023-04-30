@@ -50,7 +50,7 @@ namespace CommunicateWithArduino
             {
                 this.Text = customPropertyList[0].propertyControl.Text;
                 this.BackColor = customPropertyList[1].propertyControl.BackColor;
-                this.ForeColor = customPropertyList[2].propertyControl.ForeColor;
+                this.ForeColor = customPropertyList[2].propertyControl.BackColor;
 
                 string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
                 this.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));

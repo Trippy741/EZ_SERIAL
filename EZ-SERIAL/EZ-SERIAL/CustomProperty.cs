@@ -6,9 +6,8 @@ using System.Windows.Forms;
 
 namespace CommunicateWithArduino
 {
-    internal class CustomProperty<T>
+    internal class CustomProperty
     {
-        public T Value { get; set; }
         public CustomProperty(string propertyName, Control propertyControl)
         {
             this.propertyName = propertyName;

@@ -31,6 +31,7 @@ namespace CommunicateWithArduino
             this.AutoSize = true;
             this.Dock = DockStyle.Top;
             this.Text = groupBoxTitle;
+            //InitializeCustomPropertyPanels();
             spaceApartPropertyPanels();
             SetCustomOnChangeEvent();
         }
@@ -59,9 +60,8 @@ namespace CommunicateWithArduino
                     Panel panelControl = (Panel)panel.propertyControl;
                     panelControl.Click += delegate (object sender, EventArgs e) { customFGColorDialogControl_ColorChanged(sender, e, panel); };
                 }
-                if (panel.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Size(X, Y)")
+                if (panel.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Size (X,Y)")
                 {
-                    MessageBox.Show("Setting Event");
                     TextBox panelControl = (TextBox)panel.propertyControl;
                     //Change this event to activate only when the user presses the ENTER or SPACE keys
                     panelControl.KeyDown += delegate (object sender, KeyEventArgs e) { customSizeTextBoxControl_TextChanged(sender, e, panel); };
@@ -102,10 +102,11 @@ namespace CommunicateWithArduino
             {
                 if (customProperty == panel.customProperty)
                 {
-                    MessageBox.Show("BG");
                     ColorDialog colorDialog = new ColorDialog();
                     if (colorDialog.ShowDialog() == DialogResult.OK)
+                    {
                         customProperty.propertyControl.BackColor = colorDialog.Color;
+                    }
                 }
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
@@ -117,17 +118,17 @@ namespace CommunicateWithArduino
             {
                 if (customProperty == panel.customProperty)
                 {
-                    MessageBox.Show("FG");
                     ColorDialog colorDialog = new ColorDialog();
                     if (colorDialog.ShowDialog() == DialogResult.OK)
+                    {
                         customProperty.propertyControl.BackColor = colorDialog.Color;
+                    }
                 }
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
         private void customSizeTextBoxControl_TextChanged(object sender, KeyEventArgs e, CustomPropertiesPanel panel)
         {
-            MessageBox.Show("Entered!");
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Space)
             {
                 
@@ -138,14 +139,14 @@ namespace CommunicateWithArduino
                     if (customProperty == panel.customProperty)
                     {
                         if (senderTextBox.Text.Count(t => t == ',') != 1)
-                            MessageBox.Show("Invalid Input!");
+                            MessageBox.Show("Invalid Input: More than one comma detected!");
                         foreach (char c in senderTextBox.Text)
-                            if (!Char.IsDigit(c))
-                                MessageBox.Show("Invalid Input!");
+                            if (!Char.IsDigit(c) && c != ',')
+                                MessageBox.Show("Invalid Input: A letter was detected!");
 
                         string[] split_size = senderTextBox.Text.Split(',');
                         if (split_size.Length != 2)
-                            MessageBox.Show("Invalid Input!");
+                            MessageBox.Show("Invalid Input: No characters after comma were detected!");
                         else
                         {
                             customProperty.propertyControl.Text = senderTextBox.Text;
