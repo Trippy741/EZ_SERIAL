@@ -15,12 +15,32 @@ namespace CommunicateWithArduino
 
         private ICustomControl senderObject;
 
-        public CustomPropertiesGroupBox(object sender,string groupBoxTitle, List<CustomProperty> customPropertyList)
+        public CustomPropertiesGroupBox(ICustomControl sender,string groupBoxTitle, List<CustomProperty> customPropertyList)
         {
             this.customPropertyList.Clear();
             propertyPanels.Clear();
 
-            senderObject = sender as ICustomControl;
+            senderObject = sender;
+
+            this.customPropertyList.AddRange(customPropertyList);
+
+            for (int i = 0; i < this.customPropertyList.Count; i++)
+            {
+                propertyPanels.Add(new CustomPropertiesPanel(this.customPropertyList[i]));
+            }
+            this.AutoSize = true;
+            this.Dock = DockStyle.Top;
+            this.Text = groupBoxTitle;
+            //InitializeCustomPropertyPanels();
+            spaceApartPropertyPanels();
+            SetCustomOnChangeEvent();
+        }
+        public CustomPropertiesGroupBox(ICustomControl sender, string groupBoxTitle, List<AccessibleEvents> eventsList)
+        {
+            this.customPropertyList.Clear();
+            propertyPanels.Clear();
+
+            senderObject = sender;
 
             this.customPropertyList.AddRange(customPropertyList);
 

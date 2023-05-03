@@ -23,5 +23,16 @@ namespace CommunicateWithArduino
             }
 
         }
+
+        public string ControlTitle()
+        {
+            //return customPropertyList[0].propertyControl.Text;
+            return "Timer";
+        }
+
+        public Dictionary<string, List<CustomProperty>> ReturnCustomControlPropertyDictionary()
+        {
+            return customPropertyDictionary;
+        }
     }
 }

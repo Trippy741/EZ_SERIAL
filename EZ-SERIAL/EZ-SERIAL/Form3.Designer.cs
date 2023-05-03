@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.dashboardGroupBox = new System.Windows.Forms.GroupBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -53,8 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dashboardGroupBox.SuspendLayout();
-            this.panel12.SuspendLayout();
+            this.eventHandler_btn = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,37 +68,12 @@
             // 
             // dashboardGroupBox
             // 
-            this.dashboardGroupBox.Controls.Add(this.panel12);
             this.dashboardGroupBox.Location = new System.Drawing.Point(170, 12);
             this.dashboardGroupBox.Name = "dashboardGroupBox";
             this.dashboardGroupBox.Size = new System.Drawing.Size(578, 570);
             this.dashboardGroupBox.TabIndex = 0;
             this.dashboardGroupBox.TabStop = false;
             this.dashboardGroupBox.Text = "Dashboard";
-            // 
-            // panel12
-            // 
-            this.panel12.AutoSize = true;
-            this.panel12.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel12.Controls.Add(this.label4);
-            this.panel12.Location = new System.Drawing.Point(40, 450);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(268, 100);
-            this.panel12.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(3, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(262, 69);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "00:00:00";
             // 
             // groupBox2
             // 
@@ -110,7 +82,7 @@
             this.groupBox2.Controls.Add(this.newButtonBtn);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(152, 515);
+            this.groupBox2.Size = new System.Drawing.Size(152, 460);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls:";
@@ -178,6 +150,7 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Appearance";
+            this.groupBox1.Visible = false;
             // 
             // panel8
             // 
@@ -337,11 +310,22 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
+            // eventHandler_btn
+            // 
+            this.eventHandler_btn.Location = new System.Drawing.Point(12, 478);
+            this.eventHandler_btn.Name = "eventHandler_btn";
+            this.eventHandler_btn.Size = new System.Drawing.Size(152, 49);
+            this.eventHandler_btn.TabIndex = 4;
+            this.eventHandler_btn.Text = "Event Handler";
+            this.eventHandler_btn.UseVisualStyleBackColor = true;
+            this.eventHandler_btn.Click += new System.EventHandler(this.eventHandler_btn_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 594);
+            this.Controls.Add(this.eventHandler_btn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.editModeBtn);
             this.Controls.Add(this.groupBox2);
@@ -349,10 +333,6 @@
             this.Name = "Form3";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Form3_Load);
-            this.dashboardGroupBox.ResumeLayout(false);
-            this.dashboardGroupBox.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -397,8 +377,7 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button eventHandler_btn;
     }
 }

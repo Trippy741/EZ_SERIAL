@@ -11,8 +11,8 @@ namespace CommunicateWithArduino
     {
         protected bool isDraggable = true;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
+        private List<ICustomProperty> customEventList = new List<ICustomProperty>();
         public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
-        //public List<CustomProperty> appearanceProperties = new List<CustomProperty>();
         public CustomButtonControl()
         {
             ControlExtension.Draggable(this, true);
@@ -40,8 +40,18 @@ namespace CommunicateWithArduino
             tempTextBoxSize.Text = "75,23";
             customPropertyList.Add(sizeProperty);
 
+            CustomEvent OnChangeText = new CustomEvent();
+            OnChangeText.EventTitle = "OnChangeText";
+            customEventList.Add(OnChangeText);
+
+
             customPropertyDictionary.Add("Appearance",customPropertyList);
+            customPropertyDictionary.Add("Events",customEventList);
             ApplyPropertyChanges("Appearance",customPropertyList);
+        }
+        public Dictionary<string, List<CustomProperty>> ReturnCustomControlPropertyDictionary()
+        {
+            return customPropertyDictionary;
         }
         public void ApplyPropertyChanges(string key, List<CustomProperty> value)
         {
@@ -78,6 +88,10 @@ namespace CommunicateWithArduino
             {
                 openContextMenu();
             }
+        }
+        string ICustomControl.ControlTitle()
+        {
+            return customPropertyList[0].propertyControl.Text;
         }
     }
 }

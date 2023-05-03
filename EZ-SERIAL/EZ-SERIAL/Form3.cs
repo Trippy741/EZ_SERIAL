@@ -12,7 +12,7 @@ namespace CommunicateWithArduino
     public partial class Form3 : Form
     {
         private bool editMode = true;
-        private List<Control> customControls = new List<Control>();
+        public List<Control> customControls = new List<Control>();
         private List<CustomPropertiesGroupBox> propertiesGroupBoxes = new List<CustomPropertiesGroupBox>();
           
         public Form3()
@@ -55,7 +55,7 @@ namespace CommunicateWithArduino
 
             //Control tempControl = new Control();
 
-            if (sender.GetType() == typeof(CustomButtonControl))
+            /*if (sender.GetType() == typeof(CustomButtonControl))
             {
                 CustomButtonControl button = (CustomButtonControl)sender;
                 foreach (KeyValuePair<string, List<CustomProperty>> entry in button.customPropertyDictionary)
@@ -70,6 +70,15 @@ namespace CommunicateWithArduino
                 foreach (KeyValuePair<string, List<CustomProperty>> entry in timer.customPropertyDictionary)
                 {
                     CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(timer, entry.Key, entry.Value);
+                    panel1.Controls.Add(groupBox);
+                }
+            }*/
+            if (typeof(ICustomControl).IsAssignableFrom(typeof(CustomButtonControl)))
+            {
+                ICustomControl CustomControlTemp = (ICustomControl)sender;
+                foreach (KeyValuePair<string, List<CustomProperty>> entry in CustomControlTemp.ReturnCustomControlPropertyDictionary())
+                {
+                    CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(CustomControlTemp, entry.Key, entry.Value);
                     panel1.Controls.Add(groupBox);
                 }
             }
@@ -89,6 +98,13 @@ namespace CommunicateWithArduino
             dashboardGroupBox.Controls.Add(timer);
             customControls.Add(timer);
             //timer.MouseDown += delegate (object _sender, MouseEventArgs _e) { OnCustomControlMouseClick(sender, _e, "CUSTOM_TIMER"); };
+        }
+
+        private void eventHandler_btn_Click(object sender, EventArgs e)
+        {
+            EventHandlerForm eventHandlerForm = new EventHandlerForm();
+            eventHandlerForm.CustomControls = this.customControls;
+            eventHandlerForm.Show();
         }
     }
 }

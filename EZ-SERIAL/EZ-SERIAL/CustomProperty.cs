@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace CommunicateWithArduino
 {
-    internal class CustomProperty
+    internal class CustomProperty : ICustomProperty
     {
         public CustomProperty(string propertyName, Control propertyControl)
         {

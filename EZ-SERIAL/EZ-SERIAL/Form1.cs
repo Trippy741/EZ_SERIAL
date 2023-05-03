@@ -296,5 +296,10 @@ namespace CommunicateWithArduino
         {
 			System.Diagnostics.Process.Start("http://www.website.com");//Redirect to github page
 		}
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

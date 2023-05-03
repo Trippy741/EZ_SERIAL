@@ -68,11 +68,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnConnect);
-            this.groupBox2.Location = new System.Drawing.Point(16, 30);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(12, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(301, 198);
+            this.groupBox2.Size = new System.Drawing.Size(226, 161);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connection Manager";
@@ -80,10 +78,9 @@
             // pauseBtn
             // 
             this.pauseBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.pauseBtn.Location = new System.Drawing.Point(12, 123);
-            this.pauseBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.pauseBtn.Location = new System.Drawing.Point(9, 100);
             this.pauseBtn.Name = "pauseBtn";
-            this.pauseBtn.Size = new System.Drawing.Size(244, 26);
+            this.pauseBtn.Size = new System.Drawing.Size(183, 21);
             this.pauseBtn.TabIndex = 9;
             this.pauseBtn.Text = "Pause Connection";
             this.pauseBtn.UseVisualStyleBackColor = true;
@@ -92,10 +89,10 @@
             // refreshBtn
             // 
             this.refreshBtn.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.refreshBtn.Location = new System.Drawing.Point(263, 22);
+            this.refreshBtn.Location = new System.Drawing.Point(197, 18);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(1);
             this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(25, 25);
+            this.refreshBtn.Size = new System.Drawing.Size(19, 20);
             this.refreshBtn.TabIndex = 8;
             this.refreshBtn.Text = "⭮";
             this.refreshBtn.UseVisualStyleBackColor = true;
@@ -104,10 +101,9 @@
             // terminateButton
             // 
             this.terminateButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.terminateButton.Location = new System.Drawing.Point(11, 157);
-            this.terminateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.terminateButton.Location = new System.Drawing.Point(8, 128);
             this.terminateButton.Name = "terminateButton";
-            this.terminateButton.Size = new System.Drawing.Size(244, 26);
+            this.terminateButton.Size = new System.Drawing.Size(183, 21);
             this.terminateButton.TabIndex = 7;
             this.terminateButton.Text = "Terminate Connection";
             this.terminateButton.UseVisualStyleBackColor = true;
@@ -116,48 +112,43 @@
             // comPort
             // 
             this.comPort.FormattingEnabled = true;
-            this.comPort.Location = new System.Drawing.Point(95, 22);
-            this.comPort.Margin = new System.Windows.Forms.Padding(4);
+            this.comPort.Location = new System.Drawing.Point(71, 18);
             this.comPort.Name = "comPort";
-            this.comPort.Size = new System.Drawing.Size(160, 24);
+            this.comPort.Size = new System.Drawing.Size(121, 21);
             this.comPort.TabIndex = 6;
             // 
             // baudRate
             // 
             this.baudRate.FormattingEnabled = true;
-            this.baudRate.Location = new System.Drawing.Point(95, 53);
-            this.baudRate.Margin = new System.Windows.Forms.Padding(4);
+            this.baudRate.Location = new System.Drawing.Point(71, 43);
             this.baudRate.Name = "baudRate";
-            this.baudRate.Size = new System.Drawing.Size(160, 24);
+            this.baudRate.Size = new System.Drawing.Size(121, 21);
             this.baudRate.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 57);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(6, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 16);
+            this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Baud rate: ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "COM:";
             // 
             // btnConnect
             // 
             this.btnConnect.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConnect.Location = new System.Drawing.Point(12, 89);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConnect.Location = new System.Drawing.Point(9, 72);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(244, 26);
+            this.btnConnect.Size = new System.Drawing.Size(183, 21);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -169,11 +160,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.sendBtn);
             this.groupBox1.Controls.Add(this.sendText);
-            this.groupBox1.Location = new System.Drawing.Point(325, 31);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(244, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(308, 197);
+            this.groupBox1.Size = new System.Drawing.Size(231, 160);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data to send";
@@ -182,10 +171,9 @@
             // 
             this.sendBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sendBtn.Enabled = false;
-            this.sendBtn.Location = new System.Drawing.Point(200, 53);
-            this.sendBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.sendBtn.Location = new System.Drawing.Point(150, 43);
             this.sendBtn.Name = "sendBtn";
-            this.sendBtn.Size = new System.Drawing.Size(100, 28);
+            this.sendBtn.Size = new System.Drawing.Size(75, 23);
             this.sendBtn.TabIndex = 1;
             this.sendBtn.Text = "Send";
             this.sendBtn.UseVisualStyleBackColor = true;
@@ -195,11 +183,10 @@
             // 
             this.sendText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendText.Location = new System.Drawing.Point(9, 21);
-            this.sendText.Margin = new System.Windows.Forms.Padding(4);
-            this.sendText.MinimumSize = new System.Drawing.Size(289, 22);
+            this.sendText.Location = new System.Drawing.Point(7, 17);
+            this.sendText.MinimumSize = new System.Drawing.Size(218, 22);
             this.sendText.Name = "sendText";
-            this.sendText.Size = new System.Drawing.Size(289, 22);
+            this.sendText.Size = new System.Drawing.Size(218, 20);
             this.sendText.TabIndex = 0;
             // 
             // groupBox3
@@ -208,11 +195,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.receiveText);
-            this.groupBox3.Location = new System.Drawing.Point(16, 236);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 192);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(617, 440);
+            this.groupBox3.Size = new System.Drawing.Size(463, 358);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Received data";
@@ -222,23 +207,21 @@
             this.receiveText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.receiveText.Location = new System.Drawing.Point(8, 23);
-            this.receiveText.Margin = new System.Windows.Forms.Padding(4);
+            this.receiveText.Location = new System.Drawing.Point(6, 19);
             this.receiveText.Multiline = true;
             this.receiveText.Name = "receiveText";
             this.receiveText.ReadOnly = true;
             this.receiveText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.receiveText.Size = new System.Drawing.Size(600, 408);
+            this.receiveText.Size = new System.Drawing.Size(451, 332);
             this.receiveText.TabIndex = 0;
             // 
             // clrBtn
             // 
             this.clrBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.clrBtn.Enabled = false;
-            this.clrBtn.Location = new System.Drawing.Point(13, 678);
-            this.clrBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.clrBtn.Location = new System.Drawing.Point(10, 551);
             this.clrBtn.Name = "clrBtn";
-            this.clrBtn.Size = new System.Drawing.Size(68, 28);
+            this.clrBtn.Size = new System.Drawing.Size(51, 23);
             this.clrBtn.TabIndex = 8;
             this.clrBtn.Text = "Clear";
             this.clrBtn.UseVisualStyleBackColor = true;
@@ -248,10 +231,11 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(500, 686);
+            this.checkBox1.Location = new System.Drawing.Point(369, 556);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(133, 20);
+            this.checkBox1.Size = new System.Drawing.Size(106, 17);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Verbose Logging";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -265,16 +249,18 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(649, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(488, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveOutputToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveOutputToolStripMenuItem
@@ -282,13 +268,13 @@
             this.saveOutputToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.textFiletxtToolStripMenuItem});
             this.saveOutputToolStripMenuItem.Name = "saveOutputToolStripMenuItem";
-            this.saveOutputToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
+            this.saveOutputToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.saveOutputToolStripMenuItem.Text = "Save Output To:";
             // 
             // textFiletxtToolStripMenuItem
             // 
             this.textFiletxtToolStripMenuItem.Name = "textFiletxtToolStripMenuItem";
-            this.textFiletxtToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.textFiletxtToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.textFiletxtToolStripMenuItem.Text = "Text File (.txt)";
             this.textFiletxtToolStripMenuItem.Click += new System.EventHandler(this.textFiletxtToolStripMenuItem_Click);
             // 
@@ -297,13 +283,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.githubToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // githubToolStripMenuItem
             // 
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.githubToolStripMenuItem.Text = "Github";
             this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
             // 
@@ -315,9 +301,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 714);
+            this.ClientSize = new System.Drawing.Size(488, 587);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.clrBtn);
             this.Controls.Add(this.groupBox3);
@@ -325,8 +311,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(667, 761);
+            this.MinimumSize = new System.Drawing.Size(504, 626);
             this.Name = "Form1";
             this.Text = "EZ-Serial";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
