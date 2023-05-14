@@ -35,7 +35,7 @@ namespace CommunicateWithArduino
             spaceApartPropertyPanels();
             SetCustomOnChangeEvent();
         }
-        public CustomPropertiesGroupBox(ICustomControl sender, string groupBoxTitle, List<AccessibleEvents> eventsList)
+        public CustomPropertiesGroupBox(ICustomControl sender, string groupBoxTitle, List<CustomEvent> eventsList)
         {
             this.customPropertyList.Clear();
             propertyPanels.Clear();

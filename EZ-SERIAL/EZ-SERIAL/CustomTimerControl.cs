@@ -34,5 +34,10 @@ namespace CommunicateWithArduino
         {
             return customPropertyDictionary;
         }
+
+        public Dictionary<string, List<CustomEvent>> ReturnCustomEventPropertyDictionary()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

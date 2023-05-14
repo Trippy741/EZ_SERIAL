@@ -25,21 +25,19 @@ namespace CommunicateWithArduino
                 customControlComboBox.Items.Add(customControl.ControlTitle());
             }
             customControlComboBox.SelectionChangeCommitted += OnCustomControlComboBoxChanged;
-            for (int i = 0; i > customControlComboBox.Items.Count; i++)
-            {
-                
-            }
         }
         private void OnCustomControlComboBoxChanged(object sender,EventArgs eventArgs)
         {
             ComboBox comboBox = sender as ComboBox;
-            MessageBox.Show("Triggered Event!");
             foreach (Control control in CustomControls)
             {
                 ICustomControl customControl = control as ICustomControl;
                 if (customControl.ControlTitle() == comboBox.SelectedText)
                 {
-                    CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(customControl,"Events",customControl.);
+                    foreach(KeyValuePair<string, List<CustomEvent>> entry in customControl.ReturnCustomEventPropertyDictionary())
+                    {
+                        CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(customControl, entry.Key, entry.Value);
+                    }
                 }
                 
             }

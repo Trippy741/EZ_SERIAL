@@ -11,8 +11,10 @@ namespace CommunicateWithArduino
     {
         protected bool isDraggable = true;
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
-        private List<ICustomProperty> customEventList = new List<ICustomProperty>();
+        private List<CustomEvent> customEventList = new List<CustomEvent>();
         public Dictionary<string, List<CustomProperty>> customPropertyDictionary = new Dictionary<string, List<CustomProperty>>();
+        public Dictionary<string, List<CustomEvent>> customEventDictionary = new Dictionary<string, List<CustomEvent>>();
+
         public CustomButtonControl()
         {
             ControlExtension.Draggable(this, true);
@@ -40,13 +42,20 @@ namespace CommunicateWithArduino
             tempTextBoxSize.Text = "75,23";
             customPropertyList.Add(sizeProperty);
 
-            CustomEvent OnChangeText = new CustomEvent();
-            OnChangeText.EventTitle = "OnChangeText";
-            customEventList.Add(OnChangeText);
 
+
+
+            CustomEvent clickEvent = new CustomEvent();
+            this.Click += clickEvent.invokeEventLink;
+            clickEvent.EventTitle = "On Text Changed";
+            customEventList.Add(clickEvent);
+
+            CustomEvent bgColorChanged = new CustomEvent();
+            this.BackColorChanged += bgColorChanged.invokeEventLink;
+            bgColorChanged.EventTitle = "On Background Color Changed";
+            customEventList.Add(bgColorChanged);
 
             customPropertyDictionary.Add("Appearance",customPropertyList);
-            customPropertyDictionary.Add("Events",customEventList);
             ApplyPropertyChanges("Appearance",customPropertyList);
         }
         public Dictionary<string, List<CustomProperty>> ReturnCustomControlPropertyDictionary()
@@ -92,6 +101,11 @@ namespace CommunicateWithArduino
         string ICustomControl.ControlTitle()
         {
             return customPropertyList[0].propertyControl.Text;
+        }
+
+        public Dictionary<string, List<CustomEvent>> ReturnCustomEventPropertyDictionary()
+        {
+            return customEventDictionary;
         }
     }
 }

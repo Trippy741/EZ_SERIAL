@@ -95,6 +95,7 @@
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomEvent.cs" />
     <Compile Include="CustomPropertiesGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>

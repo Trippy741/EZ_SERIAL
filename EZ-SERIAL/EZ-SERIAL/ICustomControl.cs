@@ -9,6 +9,7 @@ namespace CommunicateWithArduino
     {
         void ApplyPropertyChanges(string key, List<CustomProperty> value);
         Dictionary<string, List<CustomProperty>> ReturnCustomControlPropertyDictionary();
+        Dictionary<string, List<CustomEvent>> ReturnCustomEventPropertyDictionary();
         string ControlTitle();
     }
 }
