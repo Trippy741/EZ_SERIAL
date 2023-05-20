@@ -26,6 +26,7 @@ namespace CommunicateWithArduino
             CustomProperty buttonTextProperty = new CustomProperty("Button Text", new TextBox());
             TextBox tempTextBoxText = (TextBox)buttonTextProperty.propertyControl;
             tempTextBoxText.Text = "Button";
+            this.Text = tempTextBoxText.Text;
             customPropertyList.Add(buttonTextProperty);
 
             //Background color property
@@ -56,6 +57,7 @@ namespace CommunicateWithArduino
             customEventList.Add(bgColorChanged);
 
             customPropertyDictionary.Add("Appearance",customPropertyList);
+            customEventDictionary.Add("Action Events: ",customEventList);
             ApplyPropertyChanges("Appearance",customPropertyList);
         }
         public Dictionary<string, List<CustomProperty>> ReturnCustomControlPropertyDictionary()
@@ -106,6 +108,10 @@ namespace CommunicateWithArduino
         public Dictionary<string, List<CustomEvent>> ReturnCustomEventPropertyDictionary()
         {
             return customEventDictionary;
+        }
+        public override string ToString()
+        {
+            return customPropertyList[0].propertyControl.Text;
         }
     }
 }

@@ -32,11 +32,14 @@ namespace CommunicateWithArduino
             foreach (Control control in CustomControls)
             {
                 ICustomControl customControl = control as ICustomControl;
-                if (customControl.ControlTitle() == comboBox.SelectedText)
+                if (customControl.ControlTitle() == comboBox.SelectedItem.ToString())
                 {
-                    foreach(KeyValuePair<string, List<CustomEvent>> entry in customControl.ReturnCustomEventPropertyDictionary())
+                    MessageBox.Show("it's workang");
+                    foreach (KeyValuePair<string, List<CustomEvent>> entry in customControl.ReturnCustomEventPropertyDictionary())
                     {
                         CustomPropertiesGroupBox groupBox = new CustomPropertiesGroupBox(customControl, entry.Key, entry.Value);
+                        panel1.Controls.Add(groupBox);
+                        MessageBox.Show("it's workang");
                     }
                 }
                 

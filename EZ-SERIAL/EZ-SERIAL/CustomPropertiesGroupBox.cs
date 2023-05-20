@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.ComponentModel.Design;
 
 namespace CommunicateWithArduino
 {
@@ -12,6 +14,10 @@ namespace CommunicateWithArduino
         public List<CustomPropertiesPanel> propertyPanels = new List<CustomPropertiesPanel>();
 
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
+
+        private List<CustomEvent> customEventsList = new List<CustomEvent>();
+
+        public List<CustomBorderlessButton> customBorderlessButtons = new List<CustomBorderlessButton>();
 
         private ICustomControl senderObject;
 
@@ -37,22 +43,23 @@ namespace CommunicateWithArduino
         }
         public CustomPropertiesGroupBox(ICustomControl sender, string groupBoxTitle, List<CustomEvent> eventsList)
         {
-            this.customPropertyList.Clear();
-            propertyPanels.Clear();
+            this.customEventsList.Clear();
+            customBorderlessButtons.Clear();
 
             senderObject = sender;
 
-            this.customPropertyList.AddRange(customPropertyList);
+            this.customEventsList.AddRange(eventsList);
 
             for (int i = 0; i < this.customPropertyList.Count; i++)
             {
-                propertyPanels.Add(new CustomPropertiesPanel(this.customPropertyList[i]));
+                customBorderlessButtons.Add(new CustomBorderlessButton(eventsList[i].EventTitle));
             }
-            this.AutoSize = true;
+            this.AutoSize = false;
+            this.Size = new Size(100,100);
             this.Dock = DockStyle.Top;
             this.Text = groupBoxTitle;
             //InitializeCustomPropertyPanels();
-            spaceApartPropertyPanels();
+            //spaceApartPropertyPanels();
             SetCustomOnChangeEvent();
         }
         public void SetCustomOnChangeEvent()
@@ -198,6 +205,31 @@ namespace CommunicateWithArduino
                     panel.Location = location;
                     this.Controls.Add(panel);
                     propertyPanels.Add(panel);
+                }
+            }
+        }
+        public void spaceApartBorderlessButtons()
+        {
+            foreach (Control control in this.Controls)
+                this.Controls.Remove(control);
+
+            if (customBorderlessButtons.Count > 0)
+            {
+                List<CustomBorderlessButton> eventPanels = new List<CustomBorderlessButton>();
+                eventPanels.AddRange(customBorderlessButtons);
+                foreach (CustomBorderlessButton eventPanel in eventPanels)
+                {
+                    customBorderlessButtons.Remove(eventPanel);
+                    System.Drawing.Point location;
+
+                    if (propertyPanels.Count > 0)
+                        location = new System.Drawing.Point(propertyPanels.Last().Location.X, propertyPanels.Last().Location.Y + locationYMargin);
+                    else
+                        location = new System.Drawing.Point(6, 21);
+
+                    //eventPanel.Location = location;
+                    //this.Controls.Add(eventPanel);
+                    customBorderlessButtons.Add(eventPanel);
                 }
             }
         }

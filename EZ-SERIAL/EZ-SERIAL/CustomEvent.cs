@@ -18,7 +18,7 @@ namespace CommunicateWithArduino
 
         public void invokeEventLink(object sender, EventArgs e)
         {
-            MessageBox.Show("Event triggered and it finally works!!!!");
+            //MessageBox.Show("Event triggered and it finally works!!!!");
         }
     }
 }

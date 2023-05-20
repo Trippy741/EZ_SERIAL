@@ -47,3 +47,6 @@ C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\Commu
 C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\CommunicateWithArduino.application
 C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\EZ_SERIAL.csproj.CopyComplete
 C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\CommunicateWithArduino.EventHandlerForm.resources
+C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\CustomBorderlessButton.g.cs
+C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\CommunicateWithArduino_MarkupCompile.cache
+C:\Users\Admin\Downloads\EZ-SERIAL\EZ_SERIAL\EZ-SERIAL\EZ-SERIAL\obj\Debug\CommunicateWithArduino_MarkupCompile.lref
