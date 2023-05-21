@@ -100,6 +100,12 @@
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomPropertiesBox_userControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomPropertiesBox_userControl.Designer.cs">
+      <DependentUpon>CustomPropertiesBox_userControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomEvent.cs" />
     <Compile Include="CustomPropertiesGroupBox.cs">
       <SubType>Component</SubType>
@@ -157,6 +163,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialPort_outputBox.cs" />
+    <EmbeddedResource Include="CustomPropertiesBox_userControl.resx">
+      <DependentUpon>CustomPropertiesBox_userControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EventHandlerForm.resx">
       <DependentUpon>EventHandlerForm.cs</DependentUpon>
     </EmbeddedResource>

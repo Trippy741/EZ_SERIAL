@@ -39,8 +39,7 @@ namespace CommunicateWithArduino
 
             //Size property
             CustomProperty sizeProperty = new CustomProperty("Size (X,Y)", new TextBox());
-            TextBox tempTextBoxSize = (TextBox)sizeProperty.propertyControl;
-            tempTextBoxSize.Text = "75,23";
+            sizeProperty.propertyControl.Text = "75,25";
             customPropertyList.Add(sizeProperty);
 
 
@@ -71,7 +70,7 @@ namespace CommunicateWithArduino
             {
                 this.Text = customPropertyList[0].propertyControl.Text;
                 this.BackColor = customPropertyList[1].propertyControl.BackColor;
-                this.ForeColor = customPropertyList[2].propertyControl.BackColor;
+                this.ForeColor = customPropertyList[2].propertyControl.BackColor; //I KNOW THIS LOOKS WRONG BUT TRUST ME IT WORKS FINE (DON'T TOUCH IT!!!)
 
                 string[] split_size = customPropertyList[3].propertyControl.Text.Split(',');
                 this.Size = new Size(int.Parse(split_size[0]), int.Parse(split_size[1]));

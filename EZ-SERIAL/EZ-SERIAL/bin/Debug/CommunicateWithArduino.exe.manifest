@@ -52,14 +52,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommunicateWithArduino.exe" size="68032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommunicateWithArduino.exe" size="74688">
       <assemblyIdentity name="CommunicateWithArduino" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OJi9jLgaH6HjeKCqRAroW167QDc=</dsig:DigestValue>
+        <dsig:DigestValue>W+cjQQzznG7oSHaIg0cvdDeTLqQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -22,7 +22,7 @@ namespace CommunicateWithArduino
 
         private void CustomCustomPropertyBox_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CommunicateWithArduino
     /// Interaction logic for CustomBorderlessButton.xaml
     /// </summary>
     [Designer("System.Windows.Forms.Design.ParentControlDesigner, System.Design", typeof(IDesigner))]
-    public partial class CustomBorderlessButton : System.Windows.Forms.UserControl
+    public partial class CustomBorderlessButton : UserControl
     {
         private string button_title { get; set; }
         public CustomBorderlessButton(string button_title)

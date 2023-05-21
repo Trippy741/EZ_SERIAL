@@ -11,7 +11,7 @@ namespace CommunicateWithArduino
     internal class CustomPropertiesGroupBox : GroupBox
     {
         private int locationYMargin = 50;
-        public List<CustomPropertiesPanel> propertyPanels = new List<CustomPropertiesPanel>();
+        public List<CustomPropertiesBox_userControl> propertyPanels = new List<CustomPropertiesBox_userControl>();
 
         private List<CustomProperty> customPropertyList = new List<CustomProperty>();
 
@@ -32,7 +32,7 @@ namespace CommunicateWithArduino
 
             for (int i = 0; i < this.customPropertyList.Count; i++)
             {
-                propertyPanels.Add(new CustomPropertiesPanel(this.customPropertyList[i]));
+                propertyPanels.Add(new CustomPropertiesBox_userControl(this.customPropertyList[i].propertyName, this.customPropertyList[i]));
             }
             this.AutoSize = true;
             this.Dock = DockStyle.Top;
@@ -65,52 +65,55 @@ namespace CommunicateWithArduino
         public void SetCustomOnChangeEvent()
         {
 
-            foreach (CustomPropertiesPanel panel in propertyPanels)
+            foreach (CustomPropertiesBox_userControl panel in propertyPanels)
             {
-                if (panel.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Button Text")
+                if (panel.customProperty.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Button Text")
                 {
-                    TextBox panelTextBox = (TextBox)panel.propertyControl;
+                    TextBox panelTextBox = panel.textBox;
                     panelTextBox.TextChanged += delegate (object sender, EventArgs e) { customTextBoxControl_TextChanged(sender, e, panel); };
+                    panel.textBox.Text = panel.customProperty.propertyControl.Text;
                 }
-                if (panel.propertyControl.GetType() == typeof(CheckBox))
+                if (panel.customProperty.propertyControl.GetType() == typeof(CheckBox))
                 {
-                    CheckBox panelCheckBox = (CheckBox)panel.propertyControl;
+                    CheckBox panelCheckBox = panel.checkBox;
                     panelCheckBox.CheckedChanged += delegate (object sender, EventArgs e) { customCheckBoxControl_CheckChanged(sender, e, panel); };
+                    panel.checkBox.Checked = panelCheckBox.Checked;
                 }
-                if (panel.propertyControl.GetType() == typeof(Panel) && panel.customProperty.propertyName == "BG Color")
+                if (panel.customProperty.propertyControl.GetType() == typeof(Panel) && panel.customProperty.propertyName == "BG Color")
                 {
-                    Panel panelControl = (Panel)panel.propertyControl;
+                    Panel panelControl = panel.panel;
                     panelControl.Click += delegate (object sender, EventArgs e) { customBGColorDialogControl_ColorChanged(sender, e, panel); };
+                    panel.panel.BackColor = panel.customProperty.propertyControl.BackColor;
                 }
-                if (panel.propertyControl.GetType() == typeof(Panel) && panel.customProperty.propertyName == "FG Color")
+                if (panel.customProperty.propertyControl.GetType() == typeof(Panel) && panel.customProperty.propertyName == "FG Color")
                 {
-                    Panel panelControl = (Panel)panel.propertyControl;
+                    Panel panelControl = panel.panel;
                     panelControl.Click += delegate (object sender, EventArgs e) { customFGColorDialogControl_ColorChanged(sender, e, panel); };
+                    panel.panel.BackColor = panel.customProperty.propertyControl.BackColor;
                 }
-                if (panel.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Size (X,Y)")
+                if (panel.customProperty.propertyControl.GetType() == typeof(TextBox) && panel.customProperty.propertyName == "Size (X,Y)")
                 {
-                    TextBox panelControl = (TextBox)panel.propertyControl;
+                    TextBox panelControl = panel.textBox;
                     //Change this event to activate only when the user presses the ENTER or SPACE keys
                     panelControl.KeyDown += delegate (object sender, KeyEventArgs e) { customSizeTextBoxControl_TextChanged(sender, e, panel); };
+                    panel.textBox.Text = panel.customProperty.propertyControl.Text;
                 }
             }
         }
-        private void customTextBoxControl_TextChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
+        private void customTextBoxControl_TextChanged(object sender, EventArgs e, CustomPropertiesBox_userControl panel)
         {
-            TextBox senderTextBox = (TextBox)sender;
-
             foreach (CustomProperty customProperty in customPropertyList)
             {
                 if (customProperty == panel.customProperty)
                 {
-                    customProperty.propertyControl.Text = panel.customProperty.propertyControl.Text;
+                    customProperty.propertyControl.Text = panel.textBox.Text;
                 }
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
             //Change the custom properties within the list
             //So that the callback function could bring those values back to the custom button
         }
-        private void customCheckBoxControl_CheckChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
+        private void customCheckBoxControl_CheckChanged(object sender, EventArgs e, CustomPropertiesBox_userControl panel)
         {
             CheckBox senderCheckBox = (CheckBox)sender;
             foreach (CustomProperty customProperty in customPropertyList)
@@ -122,7 +125,7 @@ namespace CommunicateWithArduino
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
-        private void customBGColorDialogControl_ColorChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
+        private void customBGColorDialogControl_ColorChanged(object sender, EventArgs e, CustomPropertiesBox_userControl panel)
         {
             Panel panelSender = (Panel)sender;
             foreach (CustomProperty customProperty in customPropertyList)
@@ -133,12 +136,13 @@ namespace CommunicateWithArduino
                     if (colorDialog.ShowDialog() == DialogResult.OK)
                     {
                         customProperty.propertyControl.BackColor = colorDialog.Color;
+                        panel.panel.BackColor = panel.customProperty.propertyControl.BackColor;
                     }
                 }
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
-        private void customFGColorDialogControl_ColorChanged(object sender, EventArgs e, CustomPropertiesPanel panel)
+        private void customFGColorDialogControl_ColorChanged(object sender, EventArgs e, CustomPropertiesBox_userControl panel)
         {
             Panel panelSender = (Panel)sender;
             foreach (CustomProperty customProperty in customPropertyList)
@@ -149,12 +153,13 @@ namespace CommunicateWithArduino
                     if (colorDialog.ShowDialog() == DialogResult.OK)
                     {
                         customProperty.propertyControl.BackColor = colorDialog.Color;
+                        panel.panel.BackColor = panel.customProperty.propertyControl.BackColor;
                     }
                 }
             }
             senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
         }
-        private void customSizeTextBoxControl_TextChanged(object sender, KeyEventArgs e, CustomPropertiesPanel panel)
+        private void customSizeTextBoxControl_TextChanged(object sender, KeyEventArgs e, CustomPropertiesBox_userControl panel)
         {
             if (e.KeyData == Keys.Enter || e.KeyData == Keys.Space)
             {
@@ -190,9 +195,9 @@ namespace CommunicateWithArduino
 
             if (propertyPanels.Count > 0)
             {
-                List<CustomPropertiesPanel> panels = new List<CustomPropertiesPanel>();
+                List<CustomPropertiesBox_userControl> panels = new List<CustomPropertiesBox_userControl>();
                 panels.AddRange(propertyPanels);
-                foreach (CustomPropertiesPanel panel in panels)
+                foreach (CustomPropertiesBox_userControl panel in panels)
                 {
                     propertyPanels.Remove(panel);
                     System.Drawing.Point location;
