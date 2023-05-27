@@ -50,17 +50,21 @@ namespace CommunicateWithArduino
 
             this.customEventsList.AddRange(eventsList);
 
-            for (int i = 0; i < this.customPropertyList.Count; i++)
+            for (int i = 0; i < this.customEventsList.Count; i++)
             {
-                customBorderlessButtons.Add(new CustomBorderlessButton(eventsList[i].EventTitle));
+                CustomBorderlessButton customButtonTemp = new CustomBorderlessButton(eventsList[i].EventTitle);
+                customBorderlessButtons.Add(customButtonTemp);
+                customButtonTemp.AutoSize = true;
+                this.Controls.Add(customButtonTemp);
+
             }
-            this.AutoSize = false;
-            this.Size = new Size(100,100);
+
+            this.AutoSize = true;
             this.Dock = DockStyle.Top;
             this.Text = groupBoxTitle;
             //InitializeCustomPropertyPanels();
-            //spaceApartPropertyPanels();
-            SetCustomOnChangeEvent();
+            spaceApartBorderlessButtons();
+            //SetCustomOnChangeEvent();
         }
         public void SetCustomOnChangeEvent()
         {
@@ -188,7 +192,7 @@ namespace CommunicateWithArduino
                 senderObject.ApplyPropertyChanges(this.Text, customPropertyList);
             }
         }
-        public void spaceApartPropertyPanels()
+        private void spaceApartPropertyPanels()
         {
             foreach (Control control in this.Controls)
                 this.Controls.Remove(control);
@@ -227,8 +231,8 @@ namespace CommunicateWithArduino
                     customBorderlessButtons.Remove(eventPanel);
                     System.Drawing.Point location;
 
-                    if (propertyPanels.Count > 0)
-                        location = new System.Drawing.Point(propertyPanels.Last().Location.X, propertyPanels.Last().Location.Y + locationYMargin);
+                    if (eventPanels.Count > 0)
+                        location = new System.Drawing.Point(eventPanels.Last().Location.X, eventPanels.Last().Location.Y + locationYMargin);
                     else
                         location = new System.Drawing.Point(6, 21);
 

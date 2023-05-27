@@ -45,5 +45,14 @@ namespace CommunicateWithArduino
                 
             }
         }
+
+        private void serialMonitorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            createSerialMonitorControlBlock();
+        }
+        private void createSerialMonitorControlBlock()
+        {
+            
+        }
     }
 }
